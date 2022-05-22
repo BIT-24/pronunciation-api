@@ -23,7 +23,7 @@ public class StandardPronunciationController {
 
     public static final int BYTE_RANGE = 128; // increase the byte range from here
     private static final Logger LOGGER = Logger.getLogger(StandardPronunciationController.class.getName());
-    private PronunciationService pronunciationService;
+    private final PronunciationService pronunciationService;
 
     public StandardPronunciationController(PronunciationService pronunciationService) {
         this.pronunciationService = pronunciationService;
@@ -37,13 +37,13 @@ public class StandardPronunciationController {
                                                     @RequestParam("country") String country,
                                                     @RequestParam("gender") String gender) {
 
-        LOGGER.info("Pronouncing " + userName + " by " + gender + " in " + lang + " in " + country);
+        LOGGER.info("Bit-24: Pronouncing " + userName + " by " + gender + " in " + lang + " in " + country);
 
         ByteString byteString;
         SsmlVoiceGender ssmlVoiceGender;
 
         if (StringUtils.isBlank(userName)) {
-            userName = "Greetings from Pronunciation API!";
+            userName = "Greetings from Bit 24 Pronunciation API!";
         }
         if (StringUtils.isBlank(lang)) {
             lang = "en";
